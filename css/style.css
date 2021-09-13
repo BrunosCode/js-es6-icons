@@ -7,6 +7,61 @@
 
 /* Google Fonts */
 body {
-    font-family: 'Acme', sans-serif;
     font-family: 'Rubik', sans-serif;
+}
+
+.header {
+    padding: .5rem;
+}
+.header__logo {
+    font-family: 'Acme', sans-serif;
+    color: rgb(41, 177, 221);
+}
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.filters {
+    text-align: center;
+    background-color: rgb(41, 177, 221);
+    color: white;
+    padding: 1rem;
+}
+
+.grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 100px 100px 100px 100px;
+    justify-content: left;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1.5rem;
+    padding: 1rem;
+    background-color: gray;
+}
+
+.card {
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 2px 2px black;
+    text-align: center;
+    background-color: white;
+}
+
+.icon {
+    font-size: 2rem;
+    margin: .5rem;
+}
+
+.red {
+    color: red;
+}
+.yellow {
+    color: yellow;
+}
+.green {
+    color: green;
 }
