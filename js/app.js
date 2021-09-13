@@ -112,3 +112,17 @@ const icons = [
 	  category: "animal"
 	},
   ];
+
+  // estract each icon data and inject it in the html
+  const createIcons = (array) => {
+    array.forEach(element => {
+        const { name, family, prefix, category } = element;
+        document.getElementById("grid").innerHTML += `
+        <div class="card">
+            <div class="icon"><i class="${family} ${prefix}${name}"></i></div>
+            <p>${name}</p>
+        </div>
+        `
+    });
+  }
+  createIcons(icons);
