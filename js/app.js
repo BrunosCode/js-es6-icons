@@ -121,6 +121,7 @@ const colors = {
 
   // estract each icon data and inject it in the html
   const createIcons = (icons, colors) => {
+    document.getElementById("grid").innerHTML = "";
     icons.forEach(element => {
         const { name, family, prefix, category } = element;
         document.getElementById("grid").innerHTML += `
@@ -132,3 +133,9 @@ const colors = {
     });
   }
   createIcons(icons, colors);
+
+const filter = document.getElementById("filter");
+filter.addEventListener("change", (e) => {
+    let filteredIcons = icons.filter( icon => icon.category === e.target.value )
+    createIcons(filteredIcons, colors);
+})
