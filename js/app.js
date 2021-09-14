@@ -1,7 +1,7 @@
 // Milestone 1
 // Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disponibili come da layout
 
-
+// EXTERNAL DATA
 const icons = [
 	{
 	  name: 'apple-alt',
@@ -119,22 +119,27 @@ const colors = {
 	beverage: "yellow"
 };
 
-  // estract each icon data and inject it in the html
-  const createIcons = (icons, colors) => {
-    document.getElementById("grid").innerHTML = "";
-    icons.forEach(element => {
-        const { name, family, prefix, category } = element;
-        document.getElementById("grid").innerHTML += `
-        <div class="card">
-            <div class="icon ${colors[category]}"><i class="${family} ${prefix}${name}"></i></div>
-            <p>${name}</p>
-        </div>
-        `
-    });
-  }
-  createIcons(icons, colors);
-
+// SHORTCUTS
+const grid = document.getElementById("grid");
 const filter = document.getElementById("filter");
+
+// FUNCTIONS
+// estract each icon data and inject it in the html
+const createIcons = (icons, colors) => {
+grid.innerHTML = "";
+icons.forEach(element => {
+    const { name, family, prefix, category } = element;
+    grid.innerHTML += `
+    <div class="card">
+        <div class="icon ${colors[category]}"><i class="${family} ${prefix}${name}"></i></div>
+        <p>${name}</p>
+    </div>
+    `
+});
+}
+createIcons(icons, colors);
+
+// on select change, filter the icons
 filter.addEventListener("change", (e) => {
     let filteredIcons = icons.filter( icon => icon.category === e.target.value )
     createIcons(filteredIcons, colors);
