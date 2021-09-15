@@ -125,22 +125,33 @@ const filter = document.getElementById("filter");
 
 // FUNCTIONS
 // estract each icon data and inject it in the html
-const createIcons = (icons, colors) => {
+const createIcons = (icons) => {
 grid.innerHTML = "";
 icons.forEach(element => {
-    const { name, family, prefix, category } = element;
+    const { name, family, prefix, color } = element;
     grid.innerHTML += `
     <div class="card">
-        <div class="icon ${colors[category]}"><i class="${family} ${prefix}${name}"></i></div>
+        <div class="icon" style="color:${color}"><i class="${family} ${prefix}${name}"></i></div>
         <p>${name}</p>
     </div>
     `
 });
 }
-createIcons(icons, colors);
+
+// MAIN SCRIPT
+// map icons to add colors
+const iconsColored = icons.map(icon => {
+    return {
+        ...icon,
+        color: colors[icon.category]
+    };
+});
+
+console.log("icons", icons);
+createIcons(iconsColored);
 
 // on select change, filter the icons
 filter.addEventListener("change", (e) => {
-    let filteredIcons = icons.filter( icon => icon.category === e.target.value )
-    createIcons(filteredIcons, colors);
+    let filteredIcons = icons.filter( icon => icon.category === e.target.value );
+    createIcons(filteredIcons);
 })
